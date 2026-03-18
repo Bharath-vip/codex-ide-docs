@@ -1,0 +1,6 @@
+services:
+  - type: static
+    name: codex-ide-landing-page
+    env: static
+    buildCommand: ""
+    publishPath: "."
