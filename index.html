@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codex AI IDE | Documentation & Download</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #030303;
+            --card: rgba(20, 20, 25, 0.6);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.3);
+            --text: #ffffff;
+            --text-dim: #a0a0b0;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Disclaimer Header */
+        .disclaimer-bar {
+            background: linear-gradient(90deg, #1e1b4b, #312e81);
+            color: #c7d2fe;
+            text-align: center;
+            padding: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        h1 {
+            font-size: 64px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 0%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--primary);
+            color: white;
+            padding: 18px 36px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 40px -10px var(--primary-glow);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px -10px var(--primary-glow);
+            filter: brightness(1.1);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            font-size: 32px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .glass-card {
+            background: var(--card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 40px;
+            transition: border-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        /* Grid for Stack & Steps */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .step {
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .step-num {
+            display: inline-flex;
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .stack-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stack-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        pre {
+            font-family: 'JetBrains Mono', monospace;
+            background: #0a0a0c;
+            padding: 24px;
+            border-radius: 16px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            font-size: 13px;
+            margin: 20px 0;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            color: var(--primary);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 14px;
+        }
+
+        .developer-section {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 40px; }
+            section { padding: 40px 0; }
+            .glass-card { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="disclaimer-bar">
+        ⚡ This static page is for instructions and distribution. The <strong>Codex AI IDE</strong> is the main project. Read carefully and enjoy!
+    </div>
+
+    <header class="hero container">
+        <div class="tag">Release v1.0.1 (Stable)</div>
+        <h1>Codex AI IDE</h1>
+        <p>A premium, autonomous coding environment with integrated multi-step agent logic and a sleek glassmorphic interface.</p>
+        <a href="Codex-IDE-Final.exe" class="btn-download">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download for Windows
+        </a>
+    </header>
+
+    <main class="container">
+        
+        <section id="guide">
+            <h2>Instruction Guide</h2>
+            <div class="glass-card">
+                <h3>Launch Requirements</h3>
+                <p style="margin-bottom: 24px; color: var(--text-dim);">Before launching the IDE, ensure your environment is ready for autonomous agent execution.</p>
+                
+                <div class="grid">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <h4>Install Codex CLI</h4>
+                        <p style="font-size: 14px; color: var(--text-dim); margin-top: 8px;">The IDE requires the <code>codex</code> binary to be available in your PowerShell/Terminal path. This drives the AI logic.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <h4>Launch executable</h4>
+                        <p style="font-size: 14px; color: var(--text-dim); margin-top: 8px;">Double-click <code>Codex-IDE-Final.exe</code>. A console window will appear showing the backend status.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <h4>Automatic Start</h4>
+                        <p style="font-size: 14px; color: var(--text-dim); margin-top: 8px;">Your default browser will automatically open <code>http://localhost:8000</code>. If it doesn't, navigate there manually.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 32px; padding: 20px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 12px;">
+                    <strong style="color: #fca5a5; display: block; margin-bottom: 4px;">⚠️ Administrative Rights:</strong>
+                    <p style="font-size: 14px; color: #fca5a5;">The IDE modifies files in its directory. Run as Administrator if you encounter file permission errors.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="preview">
+            <h2>Interactive IDE Preview</h2>
+            <p style="color: var(--text-dim); margin-bottom: 24px;">Experience the "Next Level" interface before you download. This is a functional simulation of the Codex AI Core.</p>
+            
+            <div class="glass-card" style="padding: 0; overflow: hidden; border-radius: 12px; height: 500px; display: flex;">
+                <!-- Mock Sidebar -->
+                <div style="width: 60px; background: rgba(0,0,0,0.4); border-right: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; padding-top: 20px; gap: 20px;">
+                    <div style="color: var(--primary);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg></div>
+                    <div style="opacity: 0.3;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+                    <div style="opacity: 0.3;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg></div>
+                </div>
+
+                <!-- Mock Explorer -->
+                <div style="width: 200px; background: rgba(0,0,0,0.2); border-right: 1px solid var(--border); padding: 20px;">
+                    <div style="font-size: 11px; font-weight: 800; color: var(--text-dim); text-transform: uppercase; margin-bottom: 15px;">Explorer</div>
+                    <div style="font-size: 13px; display: flex; flex-direction: column; gap: 8px;">
+                        <div style="color: var(--primary); display: flex; align-items: center; gap: 8px;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                            main.py
+                        </div>
+                        <div style="opacity: 0.6; display: flex; align-items: center; gap: 8px;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path></svg>
+                            engine.py
+                        </div>
+                        <div style="opacity: 0.6; display: flex; align-items: center; gap: 8px;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path></svg>
+                            styles.css
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mock Editor -->
+                <div style="flex: 1; display: flex; flex-direction: column; background: #08080a;">
+                    <div style="height: 35px; background: rgba(255,255,255,0.03); border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 15px;">
+                        <div style="font-size: 10px; background: var(--bg); padding: 4px 10px; border-radius: 4px; border: 1px solid var(--primary); color: var(--primary);">main.py</div>
+                    </div>
+                    <div style="flex: 1; padding: 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.8;">
+                        <span style="color: #c678dd;">from</span> fastapi <span style="color: #c678dd;">import</span> FastAPI<br>
+                        <span style="color: #61afef;">app</span> = <span style="color: #e5c07b;">FastAPI</span>()<br><br>
+                        <span style="color: #d19a66;">@app</span>.<span style="color: #61afef;">get</span>(<span style="color: #98c379;">"/"</span>)<br>
+                        <span style="color: #c678dd;">async def</span> <span style="color: #61afef;">root</span>():<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c678dd;">return</span> {<span style="color: #98c379;">"status"</span>: <span style="color: #98c379;">"online"</span>}
+                    </div>
+                </div>
+
+                <!-- Mock Chat -->
+                <div style="width: 280px; background: rgba(0,0,0,0.3); border-left: 1px solid var(--border); display: flex; flex-direction: column;">
+                    <div style="padding: 15px; border-bottom: 1px solid var(--border); font-size: 12px; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 8px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8V4H8"></path><rect x="4" y="8" width="16" height="12" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>
+                        Codex AI Agent
+                    </div>
+                    <div id="mock-chat-flow" style="flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; font-size: 11px;">
+                        <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; border: 1px solid var(--border);">
+                            Hello! I am your AI Agent. Ask me to generate code or fix bugs.
+                        </div>
+                    </div>
+                    <div style="padding: 15px; border-top: 1px solid var(--border);">
+                        <div style="display: flex; gap: 10px;">
+                            <input id="mock-input" type="text" placeholder="Type to try..." style="flex: 1; background: rgba(0,0,0,0.5); border: 1px solid var(--border); padding: 8px; border-radius: 6px; font-size: 11px; color: white; outline: none;">
+                            <button onclick="simulateChat()" style="background: var(--primary); border: none; padding: 8px; border-radius: 6px; color: white; cursor: pointer;">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function simulateChat() {
+                    const input = document.getElementById('mock-input');
+                    const flow = document.getElementById('mock-chat-flow');
+                    if(!input.value) return;
+
+                    const userMsg = document.createElement('div');
+                    userMsg.style.background = 'var(--primary)';
+                    userMsg.style.padding = '10px';
+                    userMsg.style.borderRadius = '8px';
+                    userMsg.style.alignSelf = 'flex-end';
+                    userMsg.style.color = 'white';
+                    userMsg.textContent = input.value;
+                    flow.appendChild(userMsg);
+
+                    const agentMsg = document.createElement('div');
+                    agentMsg.style.background = 'rgba(255,255,255,0.05)';
+                    agentMsg.style.padding = '10px';
+                    agentMsg.style.borderRadius = '8px';
+                    agentMsg.style.border = '1px solid var(--border)';
+                    agentMsg.textContent = "Agent processing... (Download the EXE to enable the full autonomous loop)";
+                    
+                    setTimeout(() => {
+                        flow.appendChild(agentMsg);
+                        flow.scrollTop = flow.scrollHeight;
+                    }, 500);
+
+                    input.value = '';
+                }
+            </script>
+
+            <div class="glass-card" style="margin-top: 32px;">
+                <h3>The Build Protocol (Logic Deep-Dive)</h3>
+                <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 20px;">Every line of the Codex IDE was crafted for synergy. Here is the core logic that powers the standalone distribution:</p>
+                <pre>
+# 🔧 Standalone Packaging Logic
+import webbrowser
+from fastapi.staticfiles import StaticFiles
+
+# 1. Mount React build as static root
+app.mount("/assets", StaticFiles(directory="dist/assets"), name="assets")
+
+# 2. Origin-Agnostic Routing
+@app.get("/{full_path:path}")
+async def serve(full_path: str):
+    return FileResponse("dist/index.html")
+
+# 3. Auto-Launch Execution
+if __name__ == "__main__":
+    webbrowser.open("http://127.0.0.1:8000")
+    uvicorn.run(app, host="127.0.0.1", port=8000, log_config=None)
+                </pre>
+            </div>
+        </section>
+
+        <section id="developer" class="developer-section">
+            <h2>The Developer</h2>
+            <div class="glass-card" style="text-align: center;">
+                <div style="width: 80px; height: 80px; background: var(--primary); border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; font-size: 32px;">👨‍💻</div>
+                <h3>Project by Bharath</h3>
+                <p style="color: var(--text-dim); margin-bottom: 12px;">Visionary Developer of the Codex AI IDE Suite.</p>
+                
+                <div style="max-width: 600px; margin: 24px auto; text-align: left; font-size: 14px; color: var(--text-dim); border-left: 2px solid var(--primary); padding-left: 20px;">
+                    <strong>The Development Story:</strong><br>
+                    "I build Codex-IDE to solve the friction between thinking and code. By combining a <strong>FastAPI</strong> orchestrator with a <strong>React</strong> micro-service architecture, I created a system where the AI doesn't just suggest code—it executes it. Using <strong>PyInstaller</strong>, I froze this entire ecosystem into a single binary, making world-class AI agent logic as portable as a text file."
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Codex AI IDE Project. All rights reserved.</p>
+            <p style="font-size: 12px; margin-top: 8px; opacity: 0.5;">Designed for distribution via GitHub Pages.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
